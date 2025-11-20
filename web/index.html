@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema de Alerta Temprana</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sistema de Alerta Temprana para Emergencias Climáticas</h1>
+      <p>Demo: procesa mensajes tipo SMS con regex y actualiza zonas.</p>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <h2>Enviar SMS Simulado</h2>
+        <form id="smsForm">
+          <label>
+            Zona
+            <select name="zona" id="zona">
+              <option>Zona Norte</option>
+              <option selected>Zona Centro</option>
+              <option>Zona Sur</option>
+            </select>
+          </label>
+          <label>
+            Texto del mensaje
+            <textarea id="texto" name="texto" rows="4" placeholder="Ej: 'Lluvia intensa en el barrio San Pedro'"></textarea>
+          </label>
+          <div class="row">
+            <button type="submit">Enviar</button>
+            <button id="resetBtn" type="button" class="secondary">Reiniciar zonas</button>
+          </div>
+        </form>
+        <p class="hint">
+          Palabras clave: "lluvia intensa", "desborde", "sequía", "huaico", "alerta roja", "alerta naranja".
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Mapa de Zonas (Demo)</h2>
+        <div id="map" class="map">
+          <div id="leaflet-map" style="width:100%;height:320px;border:1px solid #ccc;border-radius:6px"></div>
+        </div>
+        <p class="legend">
+          <span class="dot verde"></span> Segura
+          <span class="dot amarillo"></span> Precaución
+          <span class="dot rojo"></span> Evacuación
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Alertas Recientes</h2>
+        <ul id="alerts" class="alerts"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <small>Proyecto educativo en Go. Procesamiento concurrente con goroutines y regex.</small>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </body>
+  </html>
+
