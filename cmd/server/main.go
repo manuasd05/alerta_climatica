@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -18,6 +19,7 @@ import (
 // Inicia el estado compartido, el procesador concurrente y el servidor HTTP.
 func main() {
 	// Inicializar almacenamiento SQLite (alerts.db en el working dir)
+	fmt.Println("mateo_cabro")
 	store, err := storage.NewSQLite("alerts.db")
 	if err != nil {
 		log.Fatalf("no se pudo inicializar almacenamiento: %v", err)
